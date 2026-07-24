@@ -670,51 +670,11 @@ header{
 /* ==========================================================================
    RESPONSIVE LAYOUT OVERRIDES (MEDIA QUERIES)
    ========================================================================== */
-@media (max-width: 1024px) {
-    .contact-grid-container {
-        grid-template-columns: 1fr; /* Stacks form under details on tablets */
-        gap: 40px;
-    }
-    
-    .footer-container {
-        grid-template-columns: 1fr 1fr; /* Drops navigation layouts on grids */
-        gap: 40px;
-    }
-}
-
-@media (max-width: 640px) {
-    .contact-info-grid {
-        grid-template-columns: 1fr; /* Linearizes left cards track completely */
-    }
-    .form-row-half {
-        grid-template-columns: 1fr; /* Stacks name and email items */
-    }
-    .footer-container {
-        grid-template-columns: 1fr; /* Compresses bottom layout grids completely down */
-        gap: 30px;
-    }
-    .footer-bottom {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-}
-
-
-
-@media (max-width: 768px){
-    .nav-link{
-        display: none;
-    }
-    .header-container{
-        padding: 1rem;
-    }
-}
 /* ==========================================================================
-   RESPONSIVE DESIGN BREAKPOINTS (MEDIA QUERIES)
+   CLEANED & UNIFIED RESPONSIVE BREAKPOINTS
    ========================================================================== */
 
-/* 1. TABLET AND SMALL DESKTOP ADJUSTMENTS */
+/* 1. TABLETS AND SMALL DESKTOPS (1024px and down) */
 @media (max-width: 1024px) {
     .hero-grid-container {
         gap: 2rem;
@@ -730,168 +690,145 @@ header{
     }
 }
 
-/* 2. MOBILE LANDSCAPE & SMALL TABLETS */
+/* 2. MEDIUM TABLETS & LARGE MOBILE PHONES (968px and down) */
+@media (max-width: 968px) {
+    .contact-grid-container {
+        grid-template-columns: 1fr; /* Stacks contact form below details cards */
+        gap: 40px;
+    }
+}
+
+/* 3. MOBILE DEVICES / PORTRAIT MODE (768px and down) */
 @media (max-width: 768px) {
-    /* Header & Navigation Adjustments */
+    /* Header, Logo, and Layout Padding Adjustments */
     .header-container {
         padding: 1rem;
     }
 
-    .nav-link {
-        gap: 1rem;
-    }
-
-    /* Hero Section Stacking layout */
-    .hero-section {
-        padding: 4rem 1rem;
-        min-height: auto;
-    }
-
-    .hero-grid-container {
-        grid-template-columns: 1fr; /* Stacks image below or above text content */
-        text-align: center;
-        gap: 3rem;
-    }
-
-    .hero-card {
-        display: flex;
-        justify-content: center;
-    }
-
-    .hero-buttons {
-        justify-content: center;
-    }
-
-    .hero-text-content h1 {
-        font-size: 2.5rem;
-    }
-
-    /* Layout Containers Uniform Reset */
-    .about, .services, .project {
-        margin: 1rem auto;
-        padding: 1.5rem 1rem;
-        max-width: calc(100% - 2rem);
-    }
-}
-
-/* 3. MOBILE PHONES (Portrait Modes) */
-@media (max-width: 520px) {
-    /* Flex-Wrap Header so elements do not overlap */
-    .header-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    .nav-link {
-        width: 100%;
-        justify-content: center;
-        padding: 0;
-    }
-
-    /* Typography Scale Reductions */
-    .hero-text-content h1 {
-        font-size: 2.2rem;
-    }
-
-    .hero-text-content h2 {
-        font-size: 1.4rem;
-    }
-
-    .hero-text-content p {
-        font-size: 1.1rem;
-    }
-
-    /* Stack CTA Buttons vertically on tight viewports */
-    .hero-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .cv, .btn, .btn-contact {
-        width: 100%;
-        display: flex;
-    }
-    
-    .section-title {
-        font-size: 1.6rem;
-    }
-    
-    .section-title span {
-        font-size: 2.2rem;
-    }
-}
-                           /* ==========================================================================
-   RESPONSIVE DESIGN BREAKPOINTS (HAMBURGER & TYPEWRITER OVERRIDES)
-   ========================================================================== */
-
-@media (max-width: 768px) {
-    /* 1. Hamburger Navigation Adjustments */
     .cv { 
-        display: none; /* Safely hides the desktop CV layout button track */
+        display: none; /* Safely hides desktop layout button track */
     } 
     
     .menu-toggle { 
-        display: block; /* Reveals your interactive vector burger button handle */
+        display: block; /* Reveals structural vector mobile burger trigger button */
     }
 
+    /* Fixed Navigation Drawer Wrapper Configuration */
     .nav-wrapper {
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
         background-color: var(--card-bg);
-        display: none; /* Keeps mobile panel closed by default until triggered */
+        display: none; /* Keeps mobile panel hidden until JavaScript inserts active tag */
         padding: 2rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         box-shadow: var(--shadow-lg);
     }
 
-    /* Attached automatically by JavaScript click functions to show menu drop */
+    /* Fixed: Displays nav structure cleanly when hamburger script toggles class active */
     .nav-wrapper.active { 
         display: block; 
     }
     
+    /* Fixed: Replaced display: none with column flow to make mobile layout list look natural */
     .nav-link {
-        flex-direction: column; /* Line up navigation anchor elements vertically */
+        display: flex;
+        flex-direction: column; 
         align-items: center;
         gap: 1.5rem;
+        padding: 0;
     }
 
-    /* 2. Hero Typewriter Scaling & Interface Center Actions */
+    /* Hero Layout Structural Stack Overrides */
     .hero-section { 
         padding: 4rem 1rem; 
         min-height: auto; 
     }
     
     .hero-grid-container {
-        grid-template-columns: 1fr; /* Stacks image below or above content blueprint */
+        grid-template-columns: 1fr; /* Linearizes hero side columns */
         text-align: center;
         gap: 3rem;
     }
     
+    .hero-card {
+        display: flex;
+        justify-content: center;
+    }
+
     .hero-buttons { 
         justify-content: center; 
     }
     
-    /* Dynamically scales typewriter font sizing down to prevent page overflows */
     .hero-text-content h1 { 
         font-size: 2.5rem; 
     }
 
     .hero-text-content h2 { 
-        font-size: 1.6rem; /* Typographic adjustment scale for typing line string */
+        font-size: 1.6rem; 
+    }
+
+    /* Main Sections Safety Borders Layout Constraints Setup */
+    .about, .services, .project, .contact {
+        margin: 1rem auto;
+        padding: 1.5rem 1rem;
+        max-width: calc(100% - 2rem);
     }
 }
 
+/* 4. SMALL MOBILE LANDSCAPES (640px and down) */
+@media (max-width: 640px) {
+    .footer-container {
+        grid-template-columns: 1fr; /* Compresses grid footer blocks cleanly downward */
+        gap: 30px;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+/* 5. SMALL MOBILE PHONES / DETAILED VIEWPORTS (520px and down) */
+@media (max-width: 520px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .nav-link {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .contact-info-grid {
+        grid-template-columns: 1fr; /* Drops internal card pairs inline lists */
+        gap: 25px;
+    }
+
+    .form-row-half {
+        grid-template-columns: 1fr; /* Prevents Name and Email columns from collapsing sideways */
+        gap: 20px;
+    }
+
+    /* Typography Balance Scaling Updates */
+    .hero-text-content h1 { font-size: 2.2rem; }
+    .hero-text-content p { font-size: 1.1rem; }
+    
+    .section-title { font-size: 1.6rem; }
+    .section-title span { font-size: 2.2rem; }
+}
+
+/* 6. ULTRA-LIGHT VIEWPORTS AND COMPACT SMARTPHONES (480px and down) */
 @media (max-width: 480px) {
-    /* 3. Small Screen Smartphone Compressions */
     .hero-text-content h1 { 
         font-size: 2rem; 
     }
     
     .hero-text-content h2 { 
-        font-size: 1.3rem; /* Compact layout scale for tight viewports */
+        font-size: 1.3rem; 
     }
     
     .hero-buttons { 
@@ -899,34 +836,9 @@ header{
         width: 100%; 
     }
     
-    .hero-buttons .btn { 
-        width: 100%; /* Stretches contact keys smoothly over mobile backgrounds */
+    .hero-buttons .btn,
+    .cv, .btn-contact { 
+        width: 100%; /* Stretches buttons cleanly to edges */
+        display: flex;
     }
 }
-/* ==========================================================================
-   RESPONSIVE DESIGN BREAKPOINTS (CONTACT FORM OVERRIDES)
-   ========================================================================== */
-
-@media (max-width: 968px) {
-    /* 1. Stacks the two-column grid split into a fluid single vertical layout column */
-    .contact-grid-container {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-}
-
-@media (max-width: 520px) {
-    /* 2. Linearizes the left informational blocks array grid layout */
-    .contact-info-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    /* 3. Stacks your Name and Email inputs vertically so they do not overlap */
-    .form-row-half {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-}
-
-

@@ -126,4 +126,4 @@ if (contactForm) {
             alert('Thank you! Your message has been validated successfully.');
         }
     });
-}
+}})

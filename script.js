@@ -76,49 +76,54 @@ document.addEventListener('DOMContentLoaded', () => {
     typeEffect();
 
     // ==========================================================================
-    // 3. CONTACT FORM SANITIZATION AND VALIDATION ENGINE
-    // ==========================================================================
-    const contactForm = document.getElementById('contactForm');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', (event) => {
-            let isFormValid = true;
+// 3. CONTACT FORM VALIDATION ENGINE FOR ORIGINAL STRUCTURE
+// ==========================================================================
+const contactForm = document.querySelector('.contact-form');
 
-            const name = document.getElementById('nameInput');
-            const email = document.getElementById('emailInput');
-            const message = document.getElementById('messageInput');
+if (contactForm) {
+    contactForm.addEventListener('submit', (event) => {
+        let isFormValid = true;
 
-            // Name Verification
-            if (name.value.trim() === '') {
-                name.parentElement.classList.add('invalid');
-                isFormValid = false;
-            } else {
-                name.parentElement.classList.remove('invalid');
-            }
+        // Target elements precisely using their attributes inside your exact form layout
+        const nameInput = contactForm.querySelector('input[placeholder="Your Name"]');
+        const emailInput = contactForm.querySelector('input[placeholder="Your Email"]');
+        const subjectInput = contactForm.querySelector('input[placeholder="Subject"]');
+        const messageInput = contactForm.querySelector('textarea[name="message"]');
 
-            // Email Regex Structure Verification
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailPattern.test(email.value.trim())) {
-                email.parentElement.classList.add('invalid');
-                isFormValid = false;
-            } else {
-                email.parentElement.classList.remove('invalid');
-            }
+        // 1. Name Verification
+        if (!nameInput || nameInput.value.trim() === '') {
+            alert('Please enter your name.');
+            if (nameInput) nameInput.focus();
+            isFormValid = false;
+        }
 
-            // Message Body Content Verification
-            if (message.value.trim() === '') {
-                message.parentElement.classList.add('invalid');
-                isFormValid = false;
-            } else {
-                message.parentElement.classList.remove('invalid');
-            }
+        // 2. Email Structure Verification
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (isFormValid && (!emailInput || !emailPattern.test(emailInput.value.trim()))) {
+            alert('Please enter a valid email address.');
+            if (emailInput) emailInput.focus();
+            isFormValid = false;
+        }
 
-            // Halts page reloads if validation criteria paths break down
-            if (!isFormValid) {
-                event.preventDefault();
-            } else {
-                alert('Thank you, Jeffery will get back to you shortly!');
-            }
-        });
-    }
-});
+        // 3. Subject Verification
+        if (isFormValid && (!subjectInput || subjectInput.value.trim() === '')) {
+            alert('Please enter a subject for your message.');
+            if (subjectInput) subjectInput.focus();
+            isFormValid = false;
+        }
+
+        // 4. Message Body Content Verification
+        if (isFormValid && (!messageInput || messageInput.value.trim() === '')) {
+            alert('Please write a message before sending.');
+            if (messageInput) messageInput.focus();
+            isFormValid = false;
+        }
+
+        // Halts page reloads if validation criteria paths break down
+        if (!isFormValid) {
+            event.preventDefault();
+        } else {
+            alert('Thank you! Your message has been validated successfully.');
+        }
+    });
+}

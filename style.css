@@ -83,6 +83,15 @@ header{
 .nav-link a:hover {
     color: var(--text-main);
 }
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-main);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
 .cv, .btn{
     display: inlline-flex;
     align-items: center;
@@ -175,6 +184,24 @@ header{
     background-color: transparent;
     border: 1px solid rgba(255, 255, 255, 0.45);
 }
+/* TYPEWRITER ELEMENT STYLE HOOKS */
+#typewriter {
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+.cursor {
+    color: var(--primary);
+    font-weight: 400;
+    margin-left: 2px;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
 .about{
 
     /* FIX 1: Use max-width with calc to safely subtract margins on mobile, preventing overflow */
@@ -794,3 +821,112 @@ header{
         font-size: 2.2rem;
     }
 }
+                           /* ==========================================================================
+   RESPONSIVE DESIGN BREAKPOINTS (HAMBURGER & TYPEWRITER OVERRIDES)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* 1. Hamburger Navigation Adjustments */
+    .cv { 
+        display: none; /* Safely hides the desktop CV layout button track */
+    } 
+    
+    .menu-toggle { 
+        display: block; /* Reveals your interactive vector burger button handle */
+    }
+
+    .nav-wrapper {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--card-bg);
+        display: none; /* Keeps mobile panel closed by default until triggered */
+        padding: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: var(--shadow-lg);
+    }
+
+    /* Attached automatically by JavaScript click functions to show menu drop */
+    .nav-wrapper.active { 
+        display: block; 
+    }
+    
+    .nav-link {
+        flex-direction: column; /* Line up navigation anchor elements vertically */
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    /* 2. Hero Typewriter Scaling & Interface Center Actions */
+    .hero-section { 
+        padding: 4rem 1rem; 
+        min-height: auto; 
+    }
+    
+    .hero-grid-container {
+        grid-template-columns: 1fr; /* Stacks image below or above content blueprint */
+        text-align: center;
+        gap: 3rem;
+    }
+    
+    .hero-buttons { 
+        justify-content: center; 
+    }
+    
+    /* Dynamically scales typewriter font sizing down to prevent page overflows */
+    .hero-text-content h1 { 
+        font-size: 2.5rem; 
+    }
+
+    .hero-text-content h2 { 
+        font-size: 1.6rem; /* Typographic adjustment scale for typing line string */
+    }
+}
+
+@media (max-width: 480px) {
+    /* 3. Small Screen Smartphone Compressions */
+    .hero-text-content h1 { 
+        font-size: 2rem; 
+    }
+    
+    .hero-text-content h2 { 
+        font-size: 1.3rem; /* Compact layout scale for tight viewports */
+    }
+    
+    .hero-buttons { 
+        flex-direction: column; 
+        width: 100%; 
+    }
+    
+    .hero-buttons .btn { 
+        width: 100%; /* Stretches contact keys smoothly over mobile backgrounds */
+    }
+}
+/* ==========================================================================
+   RESPONSIVE DESIGN BREAKPOINTS (CONTACT FORM OVERRIDES)
+   ========================================================================== */
+
+@media (max-width: 968px) {
+    /* 1. Stacks the two-column grid split into a fluid single vertical layout column */
+    .contact-grid-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 520px) {
+    /* 2. Linearizes the left informational blocks array grid layout */
+    .contact-info-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    /* 3. Stacks your Name and Email inputs vertically so they do not overlap */
+    .form-row-half {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+

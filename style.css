@@ -126,7 +126,7 @@ header{
     align-items: center;
     justify-content: center;
     background-image: linear-gradient(to right, rgba(15, 23, 24, 0.95),
-    rgba(15, 23, 42, 0.7)),url(/img/file_000000007c8071f4ab985bf1a651b1d1.png);
+    rgba(15, 23, 42, 0.7)),url('https://plus.unsplash.com/premium_photo-1661878265739-da90bc1af051?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHRlY2hub2xvZ3klMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww');
     background-size: cover;
     background-position: center right;
     background-repeat: no-repeat;

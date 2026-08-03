@@ -126,6 +126,8 @@ header {
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
 }
 
+
+
 /* The High-Tech Button Face Layer */
 .cv a, .btn a, .send-btn {
     font-family: 'Orbitron', sans-serif; /* Applied your main branding display font */
@@ -142,10 +144,11 @@ header {
     white-space: nowrap; /* FIXED: Keeps text strictly locked in a single clean row line */
     width: 100%;
     
-    /* Translucent dark background enclosed inside thin custom cyber borders */
-    background: rgba(15, 111, 236, 0.1);
-    border: 1px solid rgba(15, 111, 236, 0.5);
-    box-shadow: inset 0 0 12px rgba(15, 111, 236, 0.2); /* Soft internal power-hum glow */
+    /* PASTE THESE 3 LINES INSTEAD: */
+background: #0f4ec1; /* Solid, deep electric-blue core background */
+border: 1px solid #38bdf8; /* Sharp neon cyan outer border frame */
+box-shadow: 0 4px 15px rgba(56, 189, 248, 0.25), inset 0 0 10px rgba(255, 255, 255, 0.1); /* Ambient outer shadow glow */
+
     
     transition: all 0.3s ease;
 }
@@ -923,10 +926,7 @@ header .cv a {
     }
 
     /* FIXED: Moves font size reduction safely onto the anchor click target layer */
-    .cv a, .btn a { 
-        font-size: 14px;
-        padding: 0.6rem 1.2rem;
-    } 
+
     
     .menu-toggle { 
         display: block; /* Reveals structural vector mobile burger trigger button */

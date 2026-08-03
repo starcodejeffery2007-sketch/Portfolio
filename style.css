@@ -82,6 +82,7 @@ header {
     display: flex;
     list-style: none;
     gap: 2rem;
+    align-items: center; /* FIXED: Keeps list elements aligned perfectly down the axis */
 }
 
 .nav-link a {
@@ -104,41 +105,52 @@ header {
     cursor: pointer;
 }
 
-/* FIXED: Unified Button Structure mapping click bounds directly onto links */
+/* ==========================================================================
+   UNIFIED CYBER BUTTON BASE STYLES
+   ========================================================================== */
 .cv, .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--primary), var(--primary-hover)); /* High-end gradient depth */
+    background: linear-gradient(135deg, var(--primary), var(--primary-hover));
     border-radius: var(--radius-sm);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 15px rgba(15, 111, 236, 0.3); /* Electric ambient shadow glow */
+    box-shadow: 0 4px 15px rgba(15, 111, 236, 0.3);
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 0; 
+    overflow: hidden; /* FIXED: Prevents any underlying link text layers from leaking out */
 }
 
+/* Global button links (Great for large content sections like Hero & Projects) */
 .cv a, .btn a {
     color: var(--text-main);
-    font-family: 'Orbitron', sans-serif; /* Applied display tracking font to CTA text */
+    font-family: 'Orbitron', sans-serif;
     font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 1px;
     text-decoration: none;
-    padding: 0.85rem 1.75rem; /* Large, fully clickable tap frame target */
+    padding: 0.85rem 1.75rem; 
     display: inline-flex;
+    white-space: nowrap;
+}
+
+/* FIXED: Target ONLY the CV button inside the Header to shrink its padding scale */
+header .cv a {
+    font-size: 0.8rem; /* Slightly smaller typography fits perfectly in nav boundaries */
+    padding: 0.5rem 1.2rem; /* FIXED: Reduced sizing variables stop the text leak entirely */
 }
 
 /* Dynamic Cyber Hover Interactivity States */
 .cv:hover, .btn:hover {
-    background: linear-gradient(135deg, var(--primary-hover), #6366f1); /* Brightens layout color scope */
-    transform: translateY(-3px); /* Smooth spatial vertical lift indicator */
-    box-shadow: 0 8px 20px rgba(15, 111, 236, 0.5); /* Glow expands outward */
+    background: linear-gradient(135deg, var(--primary-hover), #6366f1);
+    transform: translateY(-2px); /* Swapped from -3px to stop header shaking shifts */
+    box-shadow: 0 8px 20px rgba(15, 111, 236, 0.5);
     border-color: rgba(255, 255, 255, 0.25);
 }
 
 .cv:active, .btn:active {
-    transform: scale(0.96) translateY(-1px); /* Tactile click feedback */
+    transform: scale(0.96) translateY(-1px);
 }
 
 /* HERO SECTION REFACTOR */

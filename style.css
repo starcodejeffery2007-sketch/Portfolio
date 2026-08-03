@@ -97,8 +97,9 @@ header{
     cursor: pointer;
 }
 
+/* FIX: "inlline-flex" typo corrected to "inline-flex" */
 .cv, .btn{
-    display: inlline-flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     background-color: var(--primary);
@@ -123,6 +124,70 @@ header{
 .cv:active, .btn:active{
     transform: scale(0.98);
 }
+
+/* The High-Tech Button Face Layer */
+.cv a, .btn a, .send-btn {
+    position: relative;       /* Needed so the ::before light-sweep clips correctly */
+    overflow: hidden;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;       /* CHANGER: Reduced from 0.8rem to 0.75rem */
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;    /* CHANGER: Slightly tightened tracking */
+    text-decoration: none;
+
+    padding: 0.6rem 1.25rem;  /* CHANGER: Shrunk padding down for a sleeker profile */
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    width: 100%;
+    background: #0f4ec1;
+    border: 1px solid #38bdf8;
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2), inset 0 0 10px rgba(255, 255, 255, 0.1);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+/* Diagonal light-sweep element, animates across the face on hover */
+.cv a::before, .btn a::before, .send-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+}
+
+/* Flashy hover state: lift, brighten border/fill, intensify glow, trigger sweep */
+.cv a:hover, .btn a:hover, .send-btn:hover {
+    transform: translateY(-3px);
+    border-color: #7dd8ff;
+    background: #1a5fe0;
+    box-shadow: 0 8px 22px rgba(56, 189, 248, 0.55), 0 0 18px rgba(56, 189, 248, 0.4), inset 0 0 12px rgba(255, 255, 255, 0.15);
+}
+.cv a:hover::before, .btn a:hover::before, .send-btn:hover::before {
+    left: 125%;
+}
+.cv a:active, .btn a:active, .send-btn:active {
+    transform: translateY(-1px) scale(0.97);
+}
+
+/* ==========================================================================
+   NAVIGATION BAR HEADER COMPRESSION OVERRIDE
+   ========================================================================== */
+header .cv a {
+    font-size: 0.7rem;        /* CHANGER: Even smaller font for the header menu button */
+    padding: 0.4rem 1rem;     /* CHANGER: Super compact padding to sit perfectly in the top bar */
+}
+/* FIX: the block above was missing its closing brace, which had swallowed
+   every rule below it (.hero-section, .about, .services, .project, .contact,
+   footer, and all media queries) into "header .cv a { ... }" as invalid
+   nested selectors — meaning none of that CSS was being applied at all. */
 
 .hero-section{
     position: relative;
@@ -762,7 +827,9 @@ header{
     }
 }
 
-/* 2. MEDIUM TABLETS & LARGE MOBILE PHONES (968px and down) */
+/* 2. MEDIUM TABLETS & LARGE MOBILE PHONES (968px and down)
+   NOTE: duplicate of the 968px block above (kept for parity with your
+   original file; safe to delete one copy since both are identical) */
 @media (max-width: 968px) {
     .contact-grid-container {
         grid-template-columns: 1fr; /* Stacks contact form below details cards */

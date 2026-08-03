@@ -106,33 +106,39 @@ header {
 
 /* FIXED: Unified Button Structure mapping click bounds directly onto links */
 .cv, .btn {
-    display: inline-flex; /* Fixed typo spelling */
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--primary);
+    background: linear-gradient(135deg, var(--primary), var(--primary-hover)); /* High-end gradient depth */
     border-radius: var(--radius-sm);
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(15, 111, 236, 0.3); /* Electric ambient shadow glow */
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    padding: 0; /* Clear padding from container wrapper */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0; 
 }
 
-.cv a, .btn a, .hero-buttons .btn {
+.cv a, .btn a {
     color: var(--text-main);
-    font-weight: 600;
+    font-family: 'Orbitron', sans-serif; /* Applied display tracking font to CTA text */
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
     text-decoration: none;
-    padding: 0.75rem 1.5rem; /* Move click-padding safely directly onto links */
+    padding: 0.85rem 1.75rem; /* Large, fully clickable tap frame target */
     display: inline-flex;
-    width: 100%;
-    height: 100%;
 }
 
+/* Dynamic Cyber Hover Interactivity States */
 .cv:hover, .btn:hover {
-    background-color: var(--primary-hover);
+    background: linear-gradient(135deg, var(--primary-hover), #6366f1); /* Brightens layout color scope */
+    transform: translateY(-3px); /* Smooth spatial vertical lift indicator */
+    box-shadow: 0 8px 20px rgba(15, 111, 236, 0.5); /* Glow expands outward */
+    border-color: rgba(255, 255, 255, 0.25);
 }
 
 .cv:active, .btn:active {
-    transform: scale(0.98);
+    transform: scale(0.96) translateY(-1px); /* Tactile click feedback */
 }
 
 /* HERO SECTION REFACTOR */
@@ -229,24 +235,48 @@ header {
 }
 
 /* SECTIONS STRUCTURE */
-.about, .services, .project {
-    width: calc(100% - 4rem); 
-    max-width: 1200px;
+.about {
+    width: calc(100% - 2rem); 
+    max-width: 900px; /* Narrowed down container width so text doesn't stretch too thin */
     margin: 4rem auto; 
-    padding: 3rem 2rem;
-    background-color: rgba(30, 41, 59, 0.5); /* Semi-transparent card bg */
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2.5rem 2rem; /* Balanced interior padding */
+    background-color: rgba(0, 0, 0, 0.45); /* Your original dark transparency */
     border-radius: var(--radius-md);
-    backdrop-filter: blur(10px); /* Premium glassy look */
+    border: 1px solid rgba(4, 109, 247, 0.15); /* Subtle cyber blue edge glow */
+    text-align: center; /* Centers the content block context */
 }
 
-.line {
-    background-color: var(--primary);
+.about .section-title {
+    font-family: 'Orbitron', sans-serif; /* Sci-fi branding display font applied */
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.about .section-title span {
+    color: var(--primary);
+    font-size: 3rem;
+}
+
+.about .line {
+    background-color: #046df742;
     height: 4px;
-    width: 60px;
-    margin-bottom: 1.5rem;
+    width: 80px;
+    margin: 0 auto 1.5rem auto; /* Cleanly forces horizontal balance centering */
     border-radius: var(--radius-sm);
 }
+
+.about p {
+    font-size: 1.05rem;
+    color: var(--text-main);
+    line-height: 1.8;
+    text-align: justify; /* Keeps your desired layout alignment look */
+    max-width: 750px;
+    margin: 0 auto; /* Centers the text alignment wrap block */
+}
+
+
 
 .section-title {
     margin-bottom: 1.5rem;
@@ -261,6 +291,17 @@ header {
 }
 
 /* SERVICES GRID Engine */
+.service {
+    width: calc(100% - 2rem); 
+    max-width: 1200px;
+    margin: 4rem auto; 
+    padding: 3rem 2rem;
+    background-color: rgba(30, 41, 59, 0.4); /* Glassy dark surface to match theme */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    position: relative;
+    backdrop-filter: blur(10px);
+}
 .service-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -431,87 +472,65 @@ header {
     transform: translateX(4px); /* Modern, clean transform slide over padding-shifting */
 }
 
-/* ==========================================================================
-   CONTACT SECTION (FIXED OVERFLOW & MOBILE STACKING)
-   ========================================================================== */
 .contact {
-    width: calc(100% - 2rem); /* FIXED: Swapped 100% width for safe responsive calculations */
+    width: calc(100% - 2rem);
     max-width: 1200px;
-    margin: 4rem auto; /* FIXED: Automatically centers block layout horizontally */
+    margin: 4rem auto;
     padding: 3rem 2rem;
-    background-color: rgba(30, 41, 59, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: rgba(0, 0, 0, 0.411);
     border-radius: var(--radius-md);
-    backdrop-filter: blur(10px);
+    border: 1px solid rgba(4, 109, 247, 0.1);
 }
 
-.section-header {
-    margin-bottom: 2.5rem;
-}
-
-.section-header .tag {
-    color: var(--accent); /* Harmonized accent tracking badge */
-    font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-}
-
-.section-header .section-title {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 2.25rem;
-    color: var(--text-main);
-    font-weight: 700;
-}
-
+/* Two-Column Contact Split Layout Structure */
 .contact-grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3.5rem;
+    gap: 4rem;
     align-items: start;
 }
 
+/* Left Grid Content Information Blocks */
 .contact-info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
 }
 
-.info-column {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
 .info-column .cwm {
+    font-family: 'Orbitron', sans-serif;
     font-size: 1.1rem;
-    color: var(--primary);
-    font-weight: 600;
+    color: #0149f3;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
 }
 
 .info-block, .socials {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 1rem;
+    gap: 1.25rem;
     align-items: start;
+    background: rgba(30, 41, 59, 0.3); /* Translucent housing deck */
+    padding: 1.25rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.02);
 }
 
 .info-block i, .socials i {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     color: var(--primary);
-    margin-top: 3px;
 }
 
 .info-block h4, .socials h4 {
-    font-size: 0.9rem;
-    color: var(--text-main);
-    font-weight: 600;
-    margin-bottom: 0.25rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    color: #5183f7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .info-block p, .socials a {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
     text-decoration: none;
     line-height: 1.5;
@@ -519,14 +538,15 @@ header {
 
 .socials a {
     color: var(--primary);
+    font-weight: 600;
     transition: color 0.2s ease;
 }
 
 .socials a:hover {
-    color: var(--accent);
+    color: var(--accent); /* Changes color on hover */
 }
 
-/* Form inputs styling */
+/* Right Side - Styled Contact Input Fields */
 .contact-form {
     display: grid;
     gap: 1.25rem;
@@ -534,86 +554,91 @@ header {
 
 .form-row-half {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Will wrap via mobile media queries below */
+    grid-template-columns: 1fr 1fr;
     gap: 1.25rem;
 }
 
 .contact-form input, 
 .contact-form textarea {
     width: 100%;
-    padding: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-sm);
-    background-color: var(--card-bg);
+    padding: 1.1rem;
+    border: 1px solid rgba(4, 109, 247, 0.2); /* Deep neon blue initial border framing */
+    border-radius: 8px;
+    background-color: rgba(10, 15, 30, 0.6); /* Velvet deep dark interior layer */
     font-family: var(--font-sans);
     font-size: 0.95rem;
     color: var(--text-main);
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: all 0.2s ease;
 }
 
-/* Modern clean white color substitution over generic grey text placeholder formatting */
+/* Stylized grey tint placeholders text tracking formatting mapping */
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-    color: var(--text-muted);
+    color: #64748b;
 }
 
+/* Interactive Active Laser Focus Effect */
 .contact-form input:focus, 
 .contact-form textarea:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(15, 111, 236, 0.15);
+    border-color: #2563eb;
+    background-color: rgba(10, 15, 30, 0.85);
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.25); /* Focus glow effect */
 }
 
 .contact-form textarea {
-    height: 150px;
-    resize: vertical; /* Allows users to drag up/down but prevents horizontal breaks */
+    height: 160px;
+    resize: none;
 }
 
+/* The Submit Button Interface Upgrade */
 .send-btn {
-    background-color: var(--primary);
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    font-family: 'Orbitron', sans-serif;
     color: #ffffff;
-    border: none;
-    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.1rem;
     font-size: 0.95rem;
-    font-weight: 600;
-    border-radius: var(--radius-sm);
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s ease;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+    transition: all 0.2s ease;
 }
 
 .send-btn:hover {
-    background-color: var(--primary-hover);
+    background: linear-gradient(135deg, #1d4ed8, #1e40af);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    transform: translateY(-2px);
 }
 
-.send-btn:active {
-    transform: scale(0.98);
-}
 
 /* ==========================================================================
-   FOOTER SECTION (HARMONIZED & ALIGNED)
+   DARK MODERN FOOTER MATRIX BLUEPRINT (YOUR ORIGINAL PREFERRED LOOK)
    ========================================================================== */
 .main-footer {
-    background-color: #030712; 
-    color: var(--text-muted);
-    padding: 4rem 8% 2rem 8%;
-    font-family: var(--font-sans); /* Fixed font fallback string variance consistency */
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: #030712; /* Your original ultra deep dark base configuration */
+    color: #9ca3af;
+    padding: 60px 10% 30px 10%;
+    font-family: var(--font-sans); /* Uses your global layout font setup balance rules */
 }
 
+/* Original 3-Column Grid Block Distribution Structure */
 .footer-container {
     display: grid;
     grid-template-columns: 1.2fr 1.5fr 1fr;
-    gap: 3.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding-bottom: 2.5rem;
+    gap: 60px;
+    border-bottom: 1px solid #1f2937;
+    padding-bottom: 40px;
 }
 
 .footer-col h3 {
-    color: var(--text-main);
-    font-size: 1rem;
+    font-family: 'Orbitron', sans-serif; /* Upgraded subheadings tracker fonts mapping */
+    color: #ffffff;
+    font-size: 16px;
     font-weight: 600;
-    margin-bottom: 1.25rem;
-    text-transform: uppercase;
+    margin-bottom: 20px;
     letter-spacing: 1px;
 }
 
@@ -623,7 +648,7 @@ header {
     gap: 0.5rem;
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
-    font-size: 1.35rem;
+    font-size: 1.5rem;
     color: var(--text-main);
     text-decoration: none;
     margin-bottom: 1rem;
@@ -634,50 +659,56 @@ header {
 }
 
 .footer-logo img {
-    width: 35px;
+    width: 40px;
     height: auto;
 }
 
 .branding p {
-    font-size: 0.9rem;
+    font-size: 14px;
     line-height: 1.6;
-    max-width: 280px;
+    max-width: 250px;
+    color: #9ca3af;
 }
 
+/* Quick links split layout configuration grid */
 .links-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    gap: 20px;
 }
 
 .links-grid ul {
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .links-grid li {
-    margin-bottom: 0.75rem;
+    margin-bottom: 10px;
 }
 
 .links-grid a {
-    color: var(--text-muted);
+    color: #9ca3af;
     text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.2s;
+    font-size: 14px;
+    transition: color 0.2s ease;
 }
 
 .links-grid a:hover {
-    color: var(--primary);
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
 
+/* Original social clustering layouts buttons code tracks formatting */
 .footer-socials {
     display: flex;
-    gap: 1.25rem;
+    gap: 20px;
 }
 
 .footer-socials a {
-    color: var(--text-muted);
-    font-size: 1.35rem;
-    transition: color 0.2s, transform 0.2s;
+    color: #9ca3af;
+    font-size: 20px;
+    transition: all 0.2s ease;
 }
 
 .footer-socials a:hover {
@@ -685,12 +716,14 @@ header {
     transform: translateY(-3px);
 }
 
+/* Bottom copyright ribbons content bars alignments formatting rules */
 .footer-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 2rem;
-    font-size: 0.85rem;
+    padding-top: 30px;
+    font-size: 13px;
+    color: #64748b;
 }
 
 .footer-bottom .heart {

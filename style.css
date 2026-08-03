@@ -97,61 +97,38 @@ header{
     cursor: pointer;
 }
 
-/* FIX: "inlline-flex" typo corrected to "inline-flex" */
-.cv, .btn{
+/* FIX: your HTML puts the .cv / .btn class directly on the <a> itself
+   (e.g. <a href="#" class="cv">Download CV</a>) — there is no wrapper
+   div containing a nested anchor. The previous ".cv a, .btn a" rules
+   below never matched anything on the real page, so none of the
+   Orbitron styling, glow, or hover effects were actually visible.
+   Collapsed into a single layer that targets .cv / .btn / .send-btn
+   directly. */
+.cv, .btn, .send-btn {
+    position: relative;       /* Needed so the ::before light-sweep clips correctly */
+    overflow: hidden;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--primary);
-    color: var(--text-main);
-    font-weight: 600;
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--radius-sm);
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-
-}
-.btn a{
-    text-decoration: none;
-}
-.cv a{
-    text-decoration: none;
-}
-.cv:hover, .btn:hover{
-    background-color: var(--primary-hover);
-}
-.cv:active, .btn:active{
-    transform: scale(0.98);
-}
-
-/* The High-Tech Button Face Layer */
-.cv a, .btn a, .send-btn {
-    position: relative;       /* Needed so the ::before light-sweep clips correctly */
-    overflow: hidden;
     font-family: 'Orbitron', sans-serif;
-    font-size: 0.75rem;       /* CHANGER: Reduced from 0.8rem to 0.75rem */
+    font-size: 0.75rem;
     font-weight: 800;
     color: #ffffff;
     text-transform: uppercase;
-    letter-spacing: 1.5px;    /* CHANGER: Slightly tightened tracking */
+    letter-spacing: 1.5px;
     text-decoration: none;
-
-    padding: 0.6rem 1.25rem;  /* CHANGER: Shrunk padding down for a sleeker profile */
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     white-space: nowrap;
-    width: 100%;
+    padding: 0.6rem 1.25rem;
     background: #0f4ec1;
     border: 1px solid #38bdf8;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
     box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2), inset 0 0 10px rgba(255, 255, 255, 0.1);
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
 /* Diagonal light-sweep element, animates across the face on hover */
-.cv a::before, .btn a::before, .send-btn::before {
+.cv::before, .btn::before, .send-btn::before {
     content: "";
     position: absolute;
     top: 0;
@@ -164,23 +141,23 @@ header{
 }
 
 /* Flashy hover state: lift, brighten border/fill, intensify glow, trigger sweep */
-.cv a:hover, .btn a:hover, .send-btn:hover {
+.cv:hover, .btn:hover, .send-btn:hover {
     transform: translateY(-3px);
     border-color: #7dd8ff;
     background: #1a5fe0;
     box-shadow: 0 8px 22px rgba(56, 189, 248, 0.55), 0 0 18px rgba(56, 189, 248, 0.4), inset 0 0 12px rgba(255, 255, 255, 0.15);
 }
-.cv a:hover::before, .btn a:hover::before, .send-btn:hover::before {
+.cv:hover::before, .btn:hover::before, .send-btn:hover::before {
     left: 125%;
 }
-.cv a:active, .btn a:active, .send-btn:active {
+.cv:active, .btn:active, .send-btn:active {
     transform: translateY(-1px) scale(0.97);
 }
 
 /* ==========================================================================
    NAVIGATION BAR HEADER COMPRESSION OVERRIDE
    ========================================================================== */
-header .cv a {
+header .cv {
     font-size: 0.7rem;        /* CHANGER: Even smaller font for the header menu button */
     padding: 0.4rem 1rem;     /* CHANGER: Super compact padding to sit perfectly in the top bar */
 }

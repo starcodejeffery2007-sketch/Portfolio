@@ -109,7 +109,6 @@ header {
    FUTURISTIC NEON-GLOW CYBER BUTTON ENGINE
    ========================================================================== */
 
-/* The Base Button Container Wrapper */
 .cv, .btn, .send-btn {
     display: inline-flex;
     align-items: center;
@@ -119,84 +118,86 @@ header {
     border: none;
     cursor: pointer;
     padding: 0;
-    overflow: visible; /* Allows the outer neon halo to bloom outward */
+    overflow: visible; /* Allows the outer laser neon flare glow to bloom outward */
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     
     /* THE CYBER CUT: Clips the bottom-right corner at a sharp sci-fi tech angle */
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
 }
-
-
 
 /* The High-Tech Button Face Layer */
 .cv a, .btn a, .send-btn {
-    font-family: 'Orbitron', sans-serif; /* Applied your main branding display font */
-    font-size: 0.8rem;
+    font-family: 'Orbitron', sans-serif; /* Your imported display font */
+    font-size: 0.85rem;
     font-weight: 800;
     color: #ffffff;
     text-transform: uppercase;
     letter-spacing: 2px;
     text-decoration: none;
-    padding: 0.85rem 1.75rem; /* Spacious, fully clickable hitbox */
+    padding: 0.9rem 2rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    white-space: nowrap; /* FIXED: Keeps text strictly locked in a single clean row line */
+    white-space: nowrap;
     width: 100%;
     
-    /* PASTE THESE 3 LINES INSTEAD: */
-background: #0f4ec1; /* Solid, deep electric-blue core background */
-border: 1px solid #38bdf8; /* Sharp neon cyan outer border frame */
-box-shadow: 0 4px 15px rgba(56, 189, 248, 0.25), inset 0 0 10px rgba(255, 255, 255, 0.1); /* Ambient outer shadow glow */
-
+    /* Velvet dark background enclosed inside double layered custom borders */
+    background: rgba(15, 111, 236, 0.05);
+    border: 1px solid rgba(15, 111, 236, 0.4);
+    box-shadow: inset 0 0 12px rgba(15, 111, 236, 0.2); /* Soft interior grid hum */
     
     transition: all 0.3s ease;
 }
 
-/* Precise corner sub-border graphic details */
+/* Subtle corner sub-border details */
 .cv::before, .btn::before, .send-btn::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 6px;
-    height: 6px;
-    border-top: 2px solid #38bdf8; /* Sky blue cyber edge bracket indicator */
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #38bdf8; /* Cyber blue accent accents */
     border-left: 2px solid #38bdf8;
     pointer-events: none;
 }
 
 /* ==========================================================================
-   INTERACTIVE LASER HOVER EFFECTS
+   INTERACTIVE LASER HOVER EFFECTS (Pro-Level Polish)
    ========================================================================== */
 
 .cv:hover a, .btn:hover a, .send-btn:hover {
-    color: #030712 !important; /* Inverts text sharply to pure dark on cursor hover */
+    color: #030712; /* Inverts text sharply to pure dark on canvas activation */
     background: #38bdf8; /* Instantly floods the button face with neon sky-blue */
     border-color: #38bdf8;
     font-weight: 900;
     
     /* THE GLOW BLOOM: Drops a powerful volumetric shadow halo onto your body canvas */
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.6), 
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.65), 
                 inset 0 0 10px rgba(255, 255, 255, 0.5);
+    
+    text-shadow: none;
 }
 
 .cv:hover, .btn:hover, .send-btn:hover {
-    transform: translateY(-3px) scale(1.02); /* Elegant visual hover expansion lift */
+    transform: translateY(-3px) scale(1.02); /* Slight visual hover expansion lift */
 }
 
-/* Tactile Physical Press Animation Feedback */
+/* Tactile Physical Press Animation */
 .cv:active, .btn:active, .send-btn:active {
     transform: translateY(-1px) scale(0.97);
 }
 
 /* ==========================================================================
-   NAVIGATION BAR OVERRIDE COMPREHENSION (FIXED COLLISION)
+   NAVIGATION BAR HEADER OVERRIDE COMPRESSION
    ========================================================================== */
 header .cv a {
-    font-size: 0.75rem; /* Shrinks typography layout specifically inside menu boundaries */
-    padding: 0.5rem 1.25rem; /* Compressed padding profile stops header layout overflow leaks */
+    font-size: 0.75rem; /* Shrinks font-size scale slightly specifically inside menu boundaries */
+    padding: 0.55rem 1.25rem; /* Compressed padding profile stops vertical overlap leaks */
 }
+
+
+
 
 /* HERO SECTION REFACTOR */
 .hero-section {

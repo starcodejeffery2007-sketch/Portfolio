@@ -472,148 +472,218 @@ header {
     transform: translateX(4px); /* Modern, clean transform slide over padding-shifting */
 }
 
+/* ==========================================================================
+   CYBER-DARK CONTACT SECTION BLUEPRINT
+   ========================================================================== */
+
+/* 1. Main Layout Section Wrapper */
 .contact {
     width: calc(100% - 2rem);
     max-width: 1200px;
     margin: 4rem auto;
     padding: 3rem 2rem;
-    background-color: rgba(0, 0, 0, 0.411);
+    background-color: rgba(0, 0, 0, 0.411); /* Your authentic dark transparency */
+    border: 1px solid rgba(4, 109, 247, 0.1); /* Subtle cyber container border glow */
     border-radius: var(--radius-md);
-    border: 1px solid rgba(4, 109, 247, 0.1);
+    position: relative;
 }
 
-/* Two-Column Contact Split Layout Structure */
+.section-header {
+    margin-bottom: 40px;
+}
+
+.section-header .tag {
+    color: var(--primary); /* Uses your main indigo/blue color token */
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.section-header .section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 36px;
+    color: var(--text-main);
+    font-weight: 800;
+}
+
+/* 2. Base Two-Column Layout Grid */
 .contact-grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1fr 1fr; /* Splits side channels perfectly 50/50 */
+    gap: 50px;
     align-items: start;
 }
 
-/* Left Grid Content Information Blocks */
+/* 3. Left Side: Two-Column Informational Block Matrix */
 .contact-info-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr 1fr; /* Splitting info columns side-by-side */
+    gap: 30px;
+}
+
+.info-column {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
 .info-column .cwm {
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.1rem;
-    color: #0149f3;
+    font-size: 18px;
+    color: var(--primary);
     font-weight: 700;
-    margin-bottom: 0.75rem;
+    margin-bottom: 5px;
 }
 
+/* Individual Info Cards Setup */
 .info-block, .socials {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 1.25rem;
-    align-items: start;
-    background: rgba(30, 41, 59, 0.3); /* Translucent housing deck */
-    padding: 1.25rem;
+    gap: 15px;
+    align-items: center;
+    background-color: rgba(30, 41, 59, 0.2); /* Semi-transparent panel layout background */
+    padding: 15px;
     border-radius: var(--radius-sm);
     border: 1px solid rgba(255, 255, 255, 0.02);
+    transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
+.info-block:hover, .socials:hover {
+    transform: translateY(-2px);
+    border-color: rgba(15, 111, 236, 0.3); /* Highlights blue on element focus */
+}
+
+/* Icon Resizers */
 .info-block i, .socials i {
-    font-size: 1.25rem;
-    color: var(--primary);
+    font-size: 18px;
+    color: var(--primary); /* Bright brand color icons */
 }
 
 .info-block h4, .socials h4 {
     font-family: 'Orbitron', sans-serif;
-    font-size: 0.85rem;
+    font-size: 13px;
     color: #5183f7;
+    font-weight: 600;
+    margin-bottom: 2px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
 .info-block p, .socials a {
-    font-size: 0.95rem;
+    font-size: 14px;
     color: var(--text-muted);
     text-decoration: none;
-    line-height: 1.5;
+    line-height: 1.4;
 }
 
 .socials a {
     color: var(--primary);
     font-weight: 600;
     transition: color 0.2s ease;
+    word-break: break-all;
 }
 
 .socials a:hover {
-    color: var(--accent); /* Changes color on hover */
+    color: var(--text-main); /* Shifts to white text link hover glow state */
 }
 
-/* Right Side - Styled Contact Input Fields */
+/* 4. Right Side: Contact Form Element Matrix Styling Rules */
+.form-wrapper-deck {
+    width: 100%;
+}
+
 .contact-form {
     display: grid;
-    gap: 1.25rem;
+    gap: 20px;
+    width: 100%;
 }
 
+/* Name and Email side-by-side row setup */
 .form-row-half {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
+    gap: 20px;
 }
 
+/* Unified Custom Input Deck Configuration */
 .contact-form input, 
 .contact-form textarea {
     width: 100%;
-    padding: 1.1rem;
-    border: 1px solid rgba(4, 109, 247, 0.2); /* Deep neon blue initial border framing */
-    border-radius: 8px;
-    background-color: rgba(10, 15, 30, 0.6); /* Velvet deep dark interior layer */
+    padding: 15px;
+    border: 1px solid rgba(4, 109, 247, 0.2); /* Sleek translucent deep cyber blue border layout */
+    border-radius: 6px;
+    background-color: rgba(10, 15, 30, 0.6); /* Premium dark canvas theme background */
     font-family: var(--font-sans);
-    font-size: 0.95rem;
-    color: var(--text-main);
+    font-size: 14px;
+    color: var(--text-main); /* Crisp typing text */
     outline: none;
-    transition: all 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
-/* Stylized grey tint placeholders text tracking formatting mapping */
+/* Input Placeholder text color modification mapping */
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-    color: #64748b;
+    color: #576785; /* Beautiful clean grey palette matching dark identity */
 }
 
-/* Interactive Active Laser Focus Effect */
+/* Interactive Neon Laser Focus Stating Halo */
 .contact-form input:focus, 
 .contact-form textarea:focus {
-    border-color: #2563eb;
+    border-color: var(--primary);
     background-color: rgba(10, 15, 30, 0.85);
-    box-shadow: 0 0 15px rgba(37, 99, 235, 0.25); /* Focus glow effect */
+    box-shadow: 0 0 12px rgba(15, 111, 236, 0.3); /* Dynamic outer blue vector shadow bloom */
 }
 
 .contact-form textarea {
-    height: 160px;
-    resize: none;
+    resize: none; /* Stops user from breaking your card boxes canvas scale proportions */
 }
 
-/* The Submit Button Interface Upgrade */
+/* 5. Dynamic Submit Interaction Action Button Track */
 .send-btn {
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
-    font-family: 'Orbitron', sans-serif;
+    background-color: var(--primary);
     color: #ffffff;
+    font-family: 'Orbitron', sans-serif;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 1.1rem;
-    font-size: 0.95rem;
+    padding: 16px;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: 1px;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
-    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(15, 111, 236, 0.2);
+    transition: background-color 0.2s, transform 0.1s ease, box-shadow 0.2s ease;
 }
 
 .send-btn:hover {
-    background: linear-gradient(135deg, #1d4ed8, #1e40af);
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    background-color: var(--primary-hover);
+    box-shadow: 0 6px 20px rgba(15, 111, 236, 0.4);
     transform: translateY(-2px);
 }
 
+.send-btn:active {
+    transform: scale(0.98) translateY(0px); /* Tactile physical press layout bounce */
+}
 
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES BLOCK REFINER
+   ========================================================================== */
+@media (max-width: 968px) {
+    .contact-grid-container {
+        grid-template-columns: 1fr; /* Stacks the contact form below your info matrix layout cards */
+        gap: 40px;
+    }
+}
+
+@media (max-width: 520px) {
+    .contact-info-grid,
+    .form-row-half {
+        grid-template-columns: 1fr; /* Stack columns completely straight on mobile profiles */
+        gap: 20px;
+    }
+}
 /* ==========================================================================
    DARK MODERN FOOTER MATRIX BLUEPRINT (YOUR ORIGINAL PREFERRED LOOK)
    ========================================================================== */

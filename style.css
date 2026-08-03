@@ -105,87 +105,47 @@ header {
     cursor: pointer;
 }
 
-/* ==========================================================================
-   FUTURISTIC NEON-GLOW CYBER BUTTON ENGINE
-   ========================================================================== */
-
-.cv, .btn, .send-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    position: relative;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    overflow: visible; /* Allows the outer laser neon flare glow to bloom outward */
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
-    /* THE CYBER CUT: Clips the bottom-right corner at a sharp sci-fi tech angle */
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
-}
-
 /* The High-Tech Button Face Layer */
 .cv a, .btn a, .send-btn {
-    font-family: 'Orbitron', sans-serif; /* Your imported display font */
-    font-size: 0.85rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
     font-weight: 800;
     color: #ffffff;
     text-transform: uppercase;
     letter-spacing: 2px;
     text-decoration: none;
-    padding: 0.9rem 2rem;
+    padding: 0.85rem 1.75rem; 
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    white-space: nowrap;
+    white-space: nowrap; 
     width: 100%;
     
-    /* Velvet dark background enclosed inside double layered custom borders */
-    background: rgba(15, 111, 236, 0.05);
-    border: 1px solid rgba(15, 111, 236, 0.4);
-    box-shadow: inset 0 0 12px rgba(15, 111, 236, 0.2); /* Soft interior grid hum */
+    /* FIXED: Changed from transparent to a solid, deep electric-blue core background */
+    background: #0f4ec1; 
     
-    transition: all 0.3s ease;
-}
-
-/* Subtle corner sub-border details */
-.cv::before, .btn::before, .send-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 8px;
-    height: 8px;
-    border-top: 2px solid #38bdf8; /* Cyber blue accent accents */
-    border-left: 2px solid #38bdf8;
-    pointer-events: none;
+    /* A bright neon cyan border frame */
+    border: 1px solid #38bdf8; 
+    
+    /* THE GLOW ENGINE: Gives it a permanent, subtle cyber glow right on the page */
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.25), 
+                inset 0 0 10px rgba(255, 255, 255, 0.1); 
+    
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ==========================================================================
-   INTERACTIVE LASER HOVER EFFECTS (Pro-Level Polish)
+   INTERACTIVE LASER HOVER EFFECTS (STAYS UNIFIED)
    ========================================================================== */
-
 .cv:hover a, .btn:hover a, .send-btn:hover {
-    color: #030712; /* Inverts text sharply to pure dark on canvas activation */
-    background: #38bdf8; /* Instantly floods the button face with neon sky-blue */
+    color: #030712 !important; 
+    background: #38bdf8; /* Blinds the background completely on cursor hover */
     border-color: #38bdf8;
     font-weight: 900;
     
-    /* THE GLOW BLOOM: Drops a powerful volumetric shadow halo onto your body canvas */
-    box-shadow: 0 0 25px rgba(56, 189, 248, 0.65), 
-                inset 0 0 10px rgba(255, 255, 255, 0.5);
-    
-    text-shadow: none;
-}
-
-.cv:hover, .btn:hover, .send-btn:hover {
-    transform: translateY(-3px) scale(1.02); /* Slight visual hover expansion lift */
-}
-
-/* Tactile Physical Press Animation */
-.cv:active, .btn:active, .send-btn:active {
-    transform: translateY(-1px) scale(0.97);
+    /* The hover glow flares up and expands significantly */
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.7), 
+                inset 0 0 12px rgba(255, 255, 255, 0.5);
 }
 
 /* ==========================================================================

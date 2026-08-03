@@ -97,6 +97,12 @@ header{
     cursor: pointer;
 }
 
+/* Responsive CV button label: full text by default, short version
+   swapped in at small screens via the media queries below */
+.cv-short {
+    display: none;
+}
+
 /* FIX: your HTML puts the .cv / .btn class directly on the <a> itself
    (e.g. <a href="#" class="cv">Download CV</a>) — there is no wrapper
    div containing a nested anchor. The previous ".cv a, .btn a" rules
@@ -826,6 +832,13 @@ header .cv {
            font-size: 14px;
            padding: 8px 16px;
     } 
+
+    .cv-full {
+        display: none;
+    }
+    .cv-short {
+        display: inline;
+    }
     
     .menu-toggle { 
         display: block; /* Reveals structural vector mobile burger trigger button */

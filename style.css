@@ -106,7 +106,7 @@ header {
 }
 
 /* The High-Tech Button Face Layer */
-.cv a, .btn a, .send-btn {
+.cv, .btn, .send-btn {
     font-family: 'Orbitron', sans-serif;
     font-size: 0.8rem;
     font-weight: 800;
